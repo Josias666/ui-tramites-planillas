@@ -1,0 +1,27 @@
+{
+  "name": "ui-tramites-planillas",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.12.5",
+    "@nuxtjs/pwa": "^3.3.5",
+    "core-js": "^3.8.3",
+    "dedent": "^0.7.0",
+    "nuxt": "^2.14.12",
+    "vue-codemirror": "^4.0.6",
+    "vue-snotify": "^3.2.1"
+  },
+  "devDependencies": {
+    "@nuxtjs/vuetify": "^1.11.3",
+    "pug": "^3.0.2",
+    "pug-plain-loader": "^1.1.0",
+    "stylus": "^0.54.8",
+    "stylus-loader": "^3.0.2"
+  }
+}
