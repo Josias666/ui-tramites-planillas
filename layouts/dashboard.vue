@@ -30,6 +30,8 @@ v-app.dashboard
 </style>
 
 <script>
+import axios from 'axios'
+
 export default {
   data() {
     return {
@@ -61,11 +63,21 @@ export default {
             {title: 'Reportes', to: '/subsidios/reportes'},
           ],
         },
-        { title: 'Suplencias', icon: 'fas fa-user-clock',
+        { title: 'Suplencia', icon: 'fas fa-user-clock',
           path:'/rc-ivas',items:[
-            {title: 'Configuración', to: '/suplencias/configuracion'},
+            /*{title: 'Configuración', to: '/suplencias/configuracion'},
             {title: 'Registros', to: '/suplencias/registros'},
-            {title: 'Reportes', to: '/suplencias/reportes'},
+            {title: 'Reportes', to: '/suplencias/reportes'},*/
+            {title: 'Solicitud de Baja', to: '/suplencias/solicitud'},
+            {title: 'Designaciones', to: '/suplencias/designacion'},
+          ],
+        },
+        { title: 'Baja Temporal', icon: 'fas fa-user-clock',
+          path:'/rc-ivas',items:[
+            {title: 'Registro', to: '/baja/registro'},
+            {title: 'Modificar', to: '/baja/modificar'},
+            {title: 'Modificar Monto', to: '/baja/modificar-monto'},
+            {title: 'Reportes', to: '/baja/reportes'},
           ],
         },
         { title: 'Descuentos por faltas y sanciones', icon: 'fas fa-hand-holding-usd',
@@ -91,6 +103,29 @@ export default {
         },
       ]
     }
+  },
+  created(){
+    console.log('Auth =>',this.$auth)
+    console.log('setUser =>',this.$auth.$storage.state)
+    console.log('localStorage =>',window.localStorage.getItem('token'))
+    this.getConfig()
+  },
+  methods:{
+    async getConfig(){
+      console.log('from getConfig =>')
+      const { data } = await axios({
+        url: this.$axios.defaults.baseURL+ '/app/app-abms/api/v1/servicio_app_abms/usuario/configuracion',
+        method: 'get',
+        headers: {
+          'token': window.localStorage.getItem('token'),
+          'Authorization': window.localStorage.getItem('token'),
+        },
+      })
+      console.log(data)
+      commit('set_persona', data.persona)
+      commit('set_roles', data.roles)
+    }
   }
+  
 }
 </script>

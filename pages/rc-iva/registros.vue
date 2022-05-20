@@ -14,6 +14,9 @@ v-sheet(color="transparent")
     v-row
       v-btn(@click="iraModificaciones") ir a modificaciones
     v-row
+      v-col(cols="12")
+        v-test(:callback="showAlert")
+    v-row
       v-col(cols="12" md="6" v-for="(item, index) in 36" :key="index")
         v-card
           v-card-text
@@ -32,8 +35,11 @@ export default {
     //this.$snotify.success("Correct :)");
   },
   methods: {
+    showAlert(){
+      this.$snotify.info("This is a info 2 :)");
+    },
     iraModificaciones(){
-      this.salida = this.$router
+      this.salida = this.$router.options.routes
       //this.$router.push("/rc-iva/actualizaciones");
     }
   }

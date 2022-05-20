@@ -44,10 +44,13 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    '@nuxtjs/auth'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseURL:'http://sisep.minedu.gob.bo:8081'
+  },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
